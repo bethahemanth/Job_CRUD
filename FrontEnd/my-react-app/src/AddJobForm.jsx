@@ -37,9 +37,9 @@ const AddJobForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Add a Job</h2>
+      <h2>Add a Expense</h2>
       <div>
-        <label>Title:</label>
+        <label>Amount:</label>
         <input
           type="text"
           name="title"
@@ -49,7 +49,7 @@ const AddJobForm = () => {
         />
       </div>
       <div>
-        <label>Company:</label>
+        <label>Date:</label>
         <input
           type="text"
           name="company"
@@ -77,7 +77,7 @@ const AddJobForm = () => {
           required
         ></textarea>
       </div>
-      <button type="submit">Add Job</button>
+      <button type="submit">Add Expense</button>
     </form>
   );
 };

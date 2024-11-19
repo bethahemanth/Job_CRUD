@@ -5,7 +5,6 @@ const App = () => {
   const [jobs, setJobs] = useState([]);
   const [filters, setFilters] = useState({ company: '', location: '' });
 
-  // Fetch jobs with filters
   const fetchJobs = async () => {
     try {
       let query = '';
@@ -20,19 +19,16 @@ const App = () => {
     }
   };
 
-  // Handle changes in the filter input fields
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     setFilters((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Apply filters
   const handleFilterSubmit = (e) => {
     e.preventDefault();
     fetchJobs();
   };
 
-  // Handle delete job
   const handleDelete = async (id) => {
     try {
       const response = await fetch(`http://localhost:3000/api/jobs/${id}`, {
@@ -49,20 +45,19 @@ const App = () => {
     }
   };
 
-  // Fetch jobs when the component is mounted
   useEffect(() => {
     fetchJobs();
   }, []);
 
   return (
     <div>
-      <h1>Job Posting Board</h1>
+      <h1>Expense Tracker</h1>
 
       <AddJobForm />
-      <h2>Filter Jobs</h2>
+      <h2>Filter Expenses</h2>
       <form onSubmit={handleFilterSubmit}>
         <div>
-          <label>Company:</label>
+          <label>Amount:</label>
           <input
             type="text"
             name="company"
@@ -84,13 +79,13 @@ const App = () => {
         <button type="submit">Apply Filters</button>
       </form>
 
-      <h2>Job Listings</h2>
+      <h2>Expense Listings</h2>
       <ul>
         {jobs.map((job) => (
           <li key={job._id}>
             <h3>{job.title}</h3>
             <p>
-              <strong>Company:</strong> {job.company}
+              <strong>Amount:</strong> {job.company}
             </p>
             <p>
               <strong>Location:</strong> {job.location}
@@ -98,7 +93,7 @@ const App = () => {
             <p>
               <strong>Description:</strong> {job.description}
             </p>
-            <button onClick={() => handleDelete(job._id)}>Delete Job</button>
+            <button onClick={() => handleDelete(job._id)}>Delete Expense</button>
           </li>
         ))}
       </ul>

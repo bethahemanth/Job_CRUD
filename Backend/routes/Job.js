@@ -38,6 +38,7 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ message: 'Error deleting job', error: err.message });
   }
 });
+
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 
